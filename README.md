@@ -31,7 +31,7 @@ Welcome to the Training CRT (Continuous Training) project! This project is aimed
 
    ```bash
 
-   git clone https://github.com/code-gram/YCTR-FrontEnd
+   git clone [https://github.com/code-gram/YCTR-FrontEnd](https://github.com/code-gram/YCTR-FrontEnd.git)
 
    ```
 

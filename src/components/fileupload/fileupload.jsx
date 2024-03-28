@@ -8,6 +8,8 @@ import { FiUpload } from 'react-icons/fi';
 import { uploadFileData } from '../../features/redux/fileupload/fileUploadAction.js';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import Alert from 'react-bootstrap/Alert';
+
 
 export default function FileUpload() {
     const disptach = useDispatch();
@@ -16,27 +18,39 @@ export default function FileUpload() {
     const [image, setImage] = useState(null);
     const [fileName, setFileName] = useState("No Selected File");
     const [selectedFile, setSelectedFile] = useState(null);
+    const [alertmessage, setAlertMessage] = useState(null);
+    const [show, setShow] = useState(false);
 
 
 
-    const uploadToDb = async() => {
+    const uploadToDb = async () => {
 
         if (selectedFile != null) {
-            const formData = new FormData();
-            formData.append('file', selectedFile);
-            disptach(uploadFileData(formData));
-            setTimeout(()=>{
-                navigate("/ctrdata");
-            },2000);
-            
+            try {
+                const formData = new FormData();
+                formData.append('file', selectedFile);
+               await disptach(uploadFileData(formData));
+                setShow(true);
+                setAlertMessage("File is Uploaded Successfully.");
+                setTimeout(() => {
+                    navigate("/ctrdata");
+                }, 2000);
+            } catch (err) {
+                
+                setAlertMessage("OOps Something Went Wrong!!.");
+                setTimeout(() => {
+                    setShow(false);
+                }, 2000);
+            }
 
         }
 
     }
-    
+
 
     return (
         <main>
+          <Alert show={show} key='success' variant='success'>{alertmessage}</Alert> 
             <form action="" onClick={() => { document.querySelector(".input-field").click() }}>
                 <input type="file" accept=".xlsx, .xls" className="input-field" hidden
                     onChange={({ target: { files } }) => {

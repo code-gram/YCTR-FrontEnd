@@ -1,15 +1,19 @@
 import React from 'react'
-import Header from '../common/header/header.jsx'
-import Footer from '../common/footer/footer.jsx'
+import Chart from '../common/charts/chart'
+import "../dashboard/dashboard.css";
+import AssociateData from '../associate/associatedata.jsx';
 
 
-export default function Dashboard({children}) {
+export default function Dashboard() {
   return (
-    <div>
-    <Header/>
-    {children}
-    <Footer/>
+    <div className="dashboard-container">
+      <div className="chart-container">
+        <Chart />
+      </div>
+      <div className="table-container">
+        {/* Add AgGrid table component here */}
+         <AssociateData /> 
+      </div>
     </div>
-    
   )
 }

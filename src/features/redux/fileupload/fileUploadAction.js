@@ -28,6 +28,7 @@ export const uploadFileData = createAsyncThunk(
       try {
        await axios.post("http://localhost:8080/training-ctr/upload",formData);
       } catch (error) {
+        console.log("error",error);
         if (error.response) {
           return rejectWithValue(error.response);
         } else {

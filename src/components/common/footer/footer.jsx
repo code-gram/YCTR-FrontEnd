@@ -8,7 +8,7 @@ function Footer() {
 
 <div class="footer">
 
-  <p>&copy; 2024 Training-CRT. All rights reserved.</p>
+  <p>&copy; 2024 Training-CTR. All rights reserved.</p>
 
 </div>
 

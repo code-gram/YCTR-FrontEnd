@@ -20,6 +20,26 @@ export const fetchUploadFileData = createAsyncThunk(
 
 
 
+export const fetchDataByYear = createAsyncThunk(
+  "uploadfile/fetchDataByYear",
+
+  async (year, { rejectWithValue }) => {
+  
+    try {
+     const response= await axios.get("http://localhost:8080/training-ctr/"+year);
+     return response.data;
+    } catch (error) {
+      if (error.response) {
+        return rejectWithValue(error.response);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+
+
 export const uploadFileData = createAsyncThunk(
     "uploadfile/uploadFileData",
   

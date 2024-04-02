@@ -1,27 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { AgGridReact } from 'ag-grid-react';
 import '../associate/associatedata.css';
+import {useSelector} from "react-redux";
+import { useEffect } from 'react';
 
 
 const AssociateData = () => {
+
+    const yeralyData = useSelector(state => state.fileupload.yeralydata);
+    //"emp_id": 1100332,
+        //"name": "Mahesh Tukaram Surnar",
+        //"email_id": "mahesh.surnar@yash.com",
+        //"grade": "E1",
+      //  "resource_type": "Permanent",
+    //    "training_stack": "Java+React"
     // Define column definitions
     const columnDefs = [
-        { headerName: 'Make', field: 'make', sortable: true, filter: true },
-        { headerName: 'Model', field: 'model', sortable: true, filter: true },
-        { headerName: 'Price', field: 'price', sortable: true, filter: true }
+        { headerName: 'Emp Id', field: 'emp_id', sortable: true, filter: true },
+        { headerName: 'Name', field: 'name', sortable: true, filter: true },
+        { headerName: 'Email', field: 'email_id', sortable: true, filter: true },
+        { headerName: 'Grade', field: 'grade', sortable: true, filter: true },
+        { headerName: 'Resource Type', field: 'resource_type', sortable: true, filter: true },
+        { headerName: 'Training Stack', field: 'training_stack', sortable: true, filter: true }   
         // Add more columns as needed
     ];
 
+  
+
 
     // Define row data
-    const rowData = [
-        { make: 'Toyota', model: 'Celica', price: 35000 },
-        { make: 'Ford', model: 'Mondeo', price: 32000 },
-        { make: 'Porsche', model: 'Boxster', price: 72000 }
-        // Add more rows as needed
-    ];
+    const [rowData,setRowData] = useState([]);
+    useEffect(() => {
+        setRowData(yeralyData);
+      }, [yeralyData]);
 
 
     return (

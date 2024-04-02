@@ -1,0 +1,28 @@
+{
+    "title": { "text": "Training-Ctr Analysis" },
+    "subtitle": { "text": "No Year Data" },
+    "data": [
+    ],
+    "series": [
+        {
+            "type": "line",
+            "xKey": "month",
+            "yKey": "numberOfTraining",
+            "yName": "No.Of Training"
+        }
+    ],
+    "axes": [
+        {
+            "type": "category",
+            "position": "bottom"
+        },
+        {
+            "type": "number",
+            "position": "right",
+            "keys": ["numberOfTraining"]
+        }
+    ],
+    "legend": {
+        "position": "right"
+    }
+ }
